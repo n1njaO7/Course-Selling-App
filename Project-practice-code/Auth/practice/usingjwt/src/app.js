@@ -33,6 +33,7 @@ app.post("/signin",(req,res)=>{
         const token = jwt.sign({
             username : user.username
         },JWT_SECRET);
+        res.header("token",token)
         user.token = token
         res.send({
             message:"you have successfully Loged in",
