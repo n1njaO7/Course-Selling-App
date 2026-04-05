@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation</title>
+</head>
+<body>
+    <h1>Todo List </h1>
+    <ol>
+        <div id="parentNode">
+            <div id="todo">
+                <li><h4>Wake up at 4 AM</h4></li>
+                <button onclick="deleteTodo()">Delete</button>
+            </div>
+            <div id="todo">
+                <li><h4>Go to gym </h4></li>
+                <button onclick="deleteTodo()">Delete</button>
+            </div>
+        </div>
+    </ol>
+    
+    <div>
+        <input type="text" placeholder="Add your todo">
+        <button onclick="AddTodo()">Add Todo</button>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>

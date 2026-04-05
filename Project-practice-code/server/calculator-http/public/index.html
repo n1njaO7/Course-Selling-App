@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Hahaha Some Interting</title>
+</head>
+<body>
+    <h1>Calcultor for sum</h1>
+    
+        <input id="a" type="number" placeholder="Number" required>
+        <input id="b" type="number" placeholder="number" required>
+        <button onclick="addition()">Add</button>
+        <div id="ans"> </div>
+
+    <script>
+        async function addition(){
+            const a = document.getElementById("a").value;
+            const b = document.getElementById("b").value;
+            const res = await axios.post("http://10.164.47.94:3000/sum",{
+                a:a,
+                b:b
+            });
+        console.log(res);
+        document.getElementById("ans").innerText = `Ans is ${res.data.ans}`;
+
+        }
+    </script>
+</body>
+</html>

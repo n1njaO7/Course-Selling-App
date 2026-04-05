@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>frontend and backend on same sever</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <script>
+        async function serverResponse(){
+            const a = document.getElementById("A").value
+            const b = document.getElementById("B").value
+            const res = await axios.post("http://localhost:3000/sum",{
+                a : a,
+                b : b
+            })
+            alert(res.data.ans)
+        }
+    </script>
+</head>
+<body>
+    <input id="A" type="text" placeholder="First Value">
+    <input id="B" type="text" placeholder="Second Value">
+    <button onclick="serverResponse()">Find Sum</button>
+    
+</body>
+</html>

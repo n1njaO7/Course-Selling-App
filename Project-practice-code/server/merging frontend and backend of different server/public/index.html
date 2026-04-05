@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merge of Differnt Server</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        async function sendRequest(){
+        const a = document.getElementById("first-value").value 
+        const b = document.getElementById("second-value").value 
+        const res = await axios.post("http://192.168.29.251:3000/sum",{
+          a : a,
+          b : b
+
+        })
+        alert(res.data.result)
+        }
+    </script>
+</head>
+ 
+<body>
+  <input type="text" placeholder="First value" id="first-value">
+  <input type="text" placeholder="Second value" id="second-value">
+  <button onclick="sendRequest()" >Find Sum </button>
+
+    
+</body>
+</html>
