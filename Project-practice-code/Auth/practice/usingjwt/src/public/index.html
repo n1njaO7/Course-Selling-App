@@ -30,6 +30,8 @@
     })
     console.log(res)
     alert(res.data.message)
+    document.getElementById("userInfo").innerHTML = ""
+    
     }
     async function signin(){
         const username = document.getElementById("signin-username").value 
@@ -53,11 +55,12 @@
                 token : localStorage.getItem("token")
             }
         })
-        document.getElementById("userInfo").innerHTML=`Username : ${res.data.username} Password : ${res.data.password}`
+        document.getElementById("userInfo").innerHTML=`Username : ${res.data.username}${"  "} Password : ${res.data.password}`
     }
     
     function logout(){
         localStorage.removeItem("token")
+        document.getElementById("userInfo").innerHTML = `User Info : Logged Out`
     }
 </script>
 
