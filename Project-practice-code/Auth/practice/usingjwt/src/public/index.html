@@ -43,6 +43,15 @@
 
         alert(res.data.message)
     }
+
+    async function info(){
+        const res = axios.get("http://localstorage:300/get",{
+            headers: {
+                token : localStorage.setItem("token")
+            }
+        })
+        document.getElementById("userInfo").innerHTML=`Username : ${res.data.username} Password : ${res.data.password}`
+    }
     
 </script>
 
