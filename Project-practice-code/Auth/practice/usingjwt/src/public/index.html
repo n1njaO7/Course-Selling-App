@@ -31,8 +31,6 @@
     console.log(res)
     alert(res.data.message)
     document.getElementById("userInfo").innerHTML = ""
-    document.getElementById("signup-username").value = "";
-    document.getElementById("signup-password").value = "";
     
     }
     async function signin(){
@@ -44,6 +42,8 @@
         })
         console.log(res)
         localStorage.setItem("token",res.data.token)
+        document.getElementById("signup-username").value = "";
+        document.getElementById("signup-password").value = "";
         document.getElementById("signin-username").value = "";
         document.getElementById("signin-password").value = "";
         alert(res.data.message)
