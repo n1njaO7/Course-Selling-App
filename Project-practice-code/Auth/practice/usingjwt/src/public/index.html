@@ -22,8 +22,8 @@
 </body>
 <script>
     async function signup(){
-    const username = document.getElementById("signin-username").value 
-    const password = document.getElementById("signin-password").value 
+    const username = document.getElementById("signup-username").value 
+    const password = document.getElementById("signup-password").value 
     const res = await axios.post("http://localhost:3000/signup",{
         username : username,
         password : password
@@ -32,16 +32,19 @@
     alert(res.data.message)
     }
     async function signin(){
-        const username = document.getElementById("signup-username").value 
-        const password = document.getElementById("signup-password").value 
+        const username = document.getElementById("signin-username").value 
+        const password = document.getElementById("signin-password").value 
         const res = await axios.post("http://localhost:3000/signin",{
             username : username,
             password : password
         })
         console.log(res)
         localStorage.setItem("token",res.data.token)
-
+ 
         alert(res.data.message)
+        info();
+
+
     }
 
     async function info(){
@@ -52,7 +55,6 @@
         })
         document.getElementById("userInfo").innerHTML=`Username : ${res.data.username} Password : ${res.data.password}`
     }
-    info();
     
     function logout(){
         localStorage.removeItem("token")
