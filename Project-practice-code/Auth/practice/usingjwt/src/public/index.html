@@ -22,8 +22,8 @@
 </body>
 <script>
     async function signup(){
-    const username = document.getElementById("signup-username").value 
-    const password = document.getElementById("signup-password").value 
+    const username = document.getElementById("signin-username").value 
+    const password = document.getElementById("signin-password").value 
     const res = await axios.post("http://localhost:3000/signup",{
         username : username,
         password : password
@@ -45,9 +45,9 @@
     }
 
     async function info(){
-        const res = axios.get("http://localstorage:300/get",{
+        const res = await axios.get("http://localhost:3000/get",{
             headers: {
-                token : localStorage.setItem("token")
+                token : localStorage.getItem("token")
             }
         })
         document.getElementById("userInfo").innerHTML=`Username : ${res.data.username} Password : ${res.data.password}`
