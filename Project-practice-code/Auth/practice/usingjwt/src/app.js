@@ -16,7 +16,7 @@ app.post("/signup",(req,res)=>{
         password
     })
     
-    res.send({
+    res.json({
         message : "you have successfuly signed up"
     })
 })
@@ -35,12 +35,12 @@ app.post("/signin",(req,res)=>{
         },JWT_SECRET);
         res.header("token",token)
         user.token = token
-        res.send({
+        res.json({
             message:"you have successfully Loged in",
             token : token
         })
     }else{
-        res.status(403).send({
+        res.status(403).json({
             message: "Wrong credentials"
         })
     }
