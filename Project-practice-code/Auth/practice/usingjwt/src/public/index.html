@@ -24,17 +24,17 @@
     async function signup(){
     const username = document.getElementById("signup-username").value 
     const password = document.getElementById("signup-password").value 
-    const res = await axios.post("http://localhost/signup",{
+    const res = await axios.post("http://localhost:3000/signup",{
         username : username,
         password : password
     })
     console.log(res)
-    alert(res.data.message)
+    alert("You have signed up")
     }
     async function signin(){
         const username = document.getElementById("signup-username").value 
         const password = document.getElementById("signup-password").value 
-        const res = await axios.post("http://localhost/signin",{
+        const res = await axios.post("http://localhost:3000/signin",{
             username : username,
             password : password
         })

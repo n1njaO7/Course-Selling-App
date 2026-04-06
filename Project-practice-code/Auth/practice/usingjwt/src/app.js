@@ -6,6 +6,12 @@ app.use(express.json());
 
 let users=[];
 
+//-/ endpoint
+
+app.get("/",(req,res)=>{
+    res.sendFile(__dirname + "/public/index.html")
+})
+
 //-signup endpoint
 
 app.post("/signup",(req,res)=>{
