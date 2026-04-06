@@ -11,14 +11,14 @@
     <div>
         <input type="text" placeholder="Enter Username" id="signup-username">
         <input type="password" placeholder="Enter Password" id="signup-password">
-        <button onclick="signup">Sign Up</button>
+        <button onclick="signup()">Sign Up</button>
         <br>
         <input type="text" placeholder="Enter Username" id="signin-username">
         <input type="password" placeholder="Enter Password" id="signin-password">
-        <button onclick="signin">Sign in</button>
+        <button onclick="signin()">Sign in</button>
     </div>
     <h4 id="userInfo">User Info : </h4>
-    <button onclick="logout">Logout</button>
+    <button onclick="logout()">Logout</button>
 </body>
 <script>
     async function signup(){
@@ -29,7 +29,7 @@
         password : password
     })
     console.log(res)
-    alert("You have signed up")
+    alert(res.data.message)
     }
     async function signin(){
         const username = document.getElementById("signup-username").value 
@@ -38,6 +38,7 @@
             username : username,
             password : password
         })
+        console.log(res)
         localStorage.setItem("token",res.data.token)
 
         alert(res.data.message)
