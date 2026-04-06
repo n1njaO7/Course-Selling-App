@@ -8,7 +8,7 @@
 
 </head>
 <body>
-    <form>
+    <div>
         <input type="text" placeholder="Enter Username" id="signup-username">
         <input type="password" placeholder="Enter Password" id="signup-password">
         <button onclick="signup">Sign Up</button>
@@ -16,7 +16,7 @@
         <input type="text" placeholder="Enter Username" id="signin-username">
         <input type="password" placeholder="Enter Password" id="signin-password">
         <button onclick="signin">Sign in</button>
-    </form>
+    </div>
     <h4 id="userInfo">User Info : </h4>
     <button onclick="logout">Logout</button>
 </body>
@@ -28,9 +28,9 @@
         username : username,
         password : password
     })
-    alert("You are signed up")
+    console.log(res)
+    alert(res.data.message)
     }
-    localStorage.setItem("token")
     async function signin(){
         const username = document.getElementById("signup-username").value 
         const password = document.getElementById("signup-password").value 
@@ -38,7 +38,9 @@
             username : username,
             password : password
         })
-        alert("You are signed in")
+        localStorage.setItem("token",res.data.token)
+
+        alert(res.data.message)
     }
     
 </script>
