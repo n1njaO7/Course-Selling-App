@@ -45,7 +45,7 @@
     }
 
     async function info(){
-        const res = await axios.get("http://localhost:3000/get",{
+        const res = await axios.get("http://localhost:3000/me",{
             headers: {
                 token : localStorage.getItem("token")
             }
