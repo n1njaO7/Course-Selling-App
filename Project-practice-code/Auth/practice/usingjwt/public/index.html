@@ -9,10 +9,38 @@
 </head>
 <body>
     <form>
-        <input type="text" placeholder="Enter Username" id="signup-input">
-        <button>Sign Up</button>
-        <input type="text" placeholder="Enter Username" id="signin-input">
-        <button>Sign in</h2>
+        <input type="text" placeholder="Enter Username" id="signup-username">
+        <input type="password" placeholder="Enter Password" id="signup-password">
+        <button onclick="signup">Sign Up</button>
+        <br>
+        <input type="text" placeholder="Enter Username" id="signin-username">
+        <input type="password" placeholder="Enter Password" id="signin-password">
+        <button onclick="signin">Sign in</button>
     </form>
+    <h4 id="userInfo">User Info : </h4>
+    <button onclick="logout">Logout</button>
 </body>
+<script>
+    async function signup(){
+    const username = document.getElementById("signup-username").value 
+    const password = document.getElementById("signup-password").value 
+    const res = await axios.post("http://localhost/signup",{
+        username : username,
+        password : password
+    })
+    alert("You are signed up")
+    }
+    localStorage.setItem("token")
+    async function signin(){
+        const username = document.getElementById("signup-username").value 
+        const password = document.getElementById("signup-password").value 
+        const res = await axios.post("http://localhost/signin",{
+            username : username,
+            password : password
+        })
+        alert("You are signed in")
+    }
+    
+</script>
+
 </html>
