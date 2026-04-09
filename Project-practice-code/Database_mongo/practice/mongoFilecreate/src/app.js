@@ -1,7 +1,7 @@
 const express = require("express")
 const app = express();
 const {UserModel,TodoModel} = require("./db");
-const {jwt , JWT_SECRET} = require("./auth")
+const {jwt , JWT_SECRET, auth} = require("./auth")
 app.use(express.json())
 
 app.post("/signup",async(req,res)=>{
@@ -9,15 +9,20 @@ app.post("/signup",async(req,res)=>{
     const name = req.body.name;
     const password = req.body.password;
 
-    await UserModel.create({
-        email:email,
-        name : name,
-        password:password
-    })
-    res.json({
-        message: "You are signed up"
-    })
-
+    try{
+        await UserModel.create({
+            email:email,
+            name : name,
+            password:password
+        })
+        res.json({
+            message: "You are signed up"
+        })
+    }catch(e){
+        res.json({
+            message: "User already exist"
+        })
+    }
 })
 
 app.post("/signin",async(req,res)=>{
@@ -46,12 +51,35 @@ app.post("/signin",async(req,res)=>{
     }
 })
 
-app.post("/todo",(req,res)=>{
-    
+app.post("/todo",auth,async(req,res)=>{
+    const userId = req.userId;
+    const title = req.body.title;
+    const done = req.body.done;
+    await TodoModel.create({
+        userId : userId,
+        title : title,
+        done : done,
+    })
+    res.status(203).json({
+        message: "todomodel created" 
+    })
 })
 
-app.get("/todos",(req,res)=>{
-    
+app.get("/todos",auth,async(req,res)=>{
+    const userId = req.userId;
+    try{
+        todos = await UserModel.findOne({
+            userId
+        })
+        res.status(200).json({
+            todos
+        })
+    }
+    catch(e){
+        res.json({
+            message: "userId not found"
+        })
+    }
 })
 
 module.exports=app
