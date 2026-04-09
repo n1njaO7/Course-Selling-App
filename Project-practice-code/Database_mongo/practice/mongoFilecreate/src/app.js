@@ -1,8 +1,11 @@
 const express = require("express")
 const app = express();
 const {UserModel,TodoModel} = require("./db");
-const {jwt , JWT_SECRET, auth} = require("./auth")
+const {jwt , JWT_SECRET, auth} = require("./auth");
+const { default: mongoose } = require("mongoose");
 app.use(express.json())
+
+mongoose.connect("mongodb+srv://n1njasri07_db_user:tanlOyXQwijZIU9Q@cluster0.dhasnk9.mongodb.net/Todo-app07");
 
 app.post("/signup",async(req,res)=>{
     const email = req.body.email;
@@ -55,20 +58,27 @@ app.post("/todo",auth,async(req,res)=>{
     const userId = req.userId;
     const title = req.body.title;
     const done = req.body.done;
-    await TodoModel.create({
+    try{
+        await TodoModel.create({
         userId : userId,
         title : title,
         done : done,
-    })
-    res.status(203).json({
-        message: "todomodel created" 
-    })
+        })
+        res.status(203).json({
+            message: "todomodel created" 
+        })
+    }catch(e){
+        res.status(403).json({
+            message: e,
+            userId
+        })
+    }
 })
 
 app.get("/todos",auth,async(req,res)=>{
     const userId = req.userId;
     try{
-        todos = await UserModel.findOne({
+        todos = await TodoModel.findOne({
             userId
         })
         res.status(200).json({
