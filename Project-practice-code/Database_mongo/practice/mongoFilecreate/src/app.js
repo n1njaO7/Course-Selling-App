@@ -78,7 +78,7 @@ app.post("/todo",auth,async(req,res)=>{
 app.get("/todos",auth,async(req,res)=>{
     const userId = req.userId;
     try{
-        todos = await TodoModel.findOne({
+        todos = await TodoModel.find({
             userId
         })
         res.status(200).json({
