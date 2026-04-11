@@ -15,7 +15,12 @@ app.post("/signup",async (req,res)=>{
     const inputVal = z.object({
         name : z.string().min(3).max(20),
         email : z.string().min(3).max(50).email(),
-        password : z.string().min(6).max(30),
+        password : z
+            .string().min(6).max(30)
+            .regex(/[a-z]/, "Must include a lowercase letter")
+            .regex(/[A-Z]/, "Must include an uppercase letter")
+            .regex(/\d/, "Must include a number")
+            .regex(/[@$!%*?&]/, "Must include a special character")
     })
     
     const parsedData = inputVal.safeParse(req.body)
