@@ -11,11 +11,11 @@ app.post("./signup",(req,res)=>{
     
 })
 
-app.get("./",(req,res)=>{
+app.get("./todo",(req,res)=>{
     
 })
 
-app.get("./me",(req,res)=>{
+app.get("./todos",(req,res)=>{
     
 })
 
