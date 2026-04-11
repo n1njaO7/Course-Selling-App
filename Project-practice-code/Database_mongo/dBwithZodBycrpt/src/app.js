@@ -1,6 +1,7 @@
 const express = require ("express");
 const app = express();
 const {z} = require("zod");
+const bcrypt = require ("bcrypt")
 const {UserModel,TodoModel} =  require("./db");
 const { default: mongoose } = require("mongoose");
 
@@ -26,10 +27,11 @@ app.post("/signup",async (req,res)=>{
     
     try{
         const {name , email, password} = parsedData.data
+        const hassedpass = await bcrypt.hash(password,10)
         await UserModel.create({
-        name : name,
-        email: email,
-        password : password
+        name,
+        email,
+        password : hassedpass
         })
         res.status(203).json({
             message: "You sre Signed up"
