@@ -98,8 +98,18 @@ app.post("/todo",auth,async(req,res)=>{
 
 })
 
-app.get("/todos",(req,res)=>{
-    
+app.get("/todos",auth,async(req,res)=>{
+    try{
+        const userId = req.userId;
+        const todos = await TodoModel.find({userId})  
+        res.status(200).json({
+            todos
+        })
+    }catch(e){
+        res.status(500).json({
+            message: "Internal Server Issue"
+        })
+    }
 })
 
 module.exports= app;
