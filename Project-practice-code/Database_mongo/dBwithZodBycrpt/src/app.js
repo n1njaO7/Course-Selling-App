@@ -77,8 +77,25 @@ app.post("/signin",async(req,res)=>{
 
 })
 
-app.get("/todo",(req,res)=>{
-    
+app.post("/todo",auth,async(req,res)=>{
+    try{
+        const userId = req.userId;
+        const title = req.body.title;
+        const done = req.body.done;
+        await TodoModel.create({
+            userId,
+            title,
+            done
+        })
+        res.status(201).json({
+            message: "Todo is created"
+        })
+    }catch(e){
+        res.status(404).json({
+            message: "Internal server Issue"
+        })
+    }
+
 })
 
 app.get("/todos",(req,res)=>{
