@@ -4,6 +4,7 @@ const {z} = require("zod");
 const bcrypt = require ("bcrypt")
 const {UserModel,TodoModel} =  require("./db");
 const { default: mongoose } = require("mongoose");
+const { jwt,JWT_SECRET,auth } = require("./auth");
 
 app.use(express.json())
 
@@ -33,7 +34,7 @@ app.post("/signup",async (req,res)=>{
         email,
         password : hassedpass
         })
-        res.status(203).json({
+        res.status(201).json({
             message: "You sre Signed up"
         })
     }catch(e){
@@ -44,8 +45,36 @@ app.post("/signup",async (req,res)=>{
 
 })
 
-app.post("/signup",(req,res)=>{
-    
+app.post("/signin",async(req,res)=>{
+    const email = req.body.email;
+    const password = req.body.password;
+    try{
+        const user = await UserModel.findOne({email})
+        if(!user){
+            return res.status(404).json({
+                message : "User Not Found"
+            })
+        }
+        const isMatch = await bcrypt.compare(password,user.password)
+        if(!isMatch){
+            return res.status(401).json({
+                message : "Invalid Credentials"
+            })
+        }
+        const token = jwt.sign({
+            userId : user._id
+        },JWT_SECRET) 
+
+        res.status(200).json({
+            message : "You are Signed in",
+            token : token
+        })
+    }catch(e){
+        res.status(500).json({
+            message: "internal issue"
+        })
+    }
+
 })
 
 app.get("/todo",(req,res)=>{
