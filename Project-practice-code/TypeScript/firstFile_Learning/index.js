@@ -18,4 +18,10 @@ function isLeggal(age) {
     }
 }
 console.log("Am i eligible : " + isLeggal(50));
+function delayedCall(fn) {
+    setTimeout(fn, 1000);
+}
+delayedCall(() => {
+    console.log("hi there");
+});
 //# sourceMappingURL=index.js.map

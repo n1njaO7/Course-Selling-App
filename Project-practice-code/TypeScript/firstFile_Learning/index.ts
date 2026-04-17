@@ -17,3 +17,11 @@ function isLeggal(age:number):boolean{
     }
 }
 console.log("Am i eligible : "+isLeggal(50));
+
+function delayedCall(fn:()=>void){
+    setTimeout(fn,1000)
+}
+
+delayedCall(()=>{
+    console.log("hi there")
+})
