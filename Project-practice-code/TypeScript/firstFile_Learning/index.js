@@ -9,4 +9,13 @@ function sum(a, b) {
 }
 let ans = sum(4, 5);
 console.log(ans);
+function isLeggal(age) {
+    if (age >= 18) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+console.log("Am i eligible : " + isLeggal(50));
 //# sourceMappingURL=index.js.map
