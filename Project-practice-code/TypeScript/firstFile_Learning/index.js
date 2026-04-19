@@ -24,4 +24,8 @@ function delayedCall(fn) {
 delayedCall(() => {
     console.log("hi there");
 });
+function twoSum(a, b) {
+    return a + b;
+}
+console.log(twoSum(4, 5));
 //# sourceMappingURL=index.js.map
