@@ -26,3 +26,8 @@ delayedCall(()=>{
     console.log("hi there")
 })
 
+function twoSum (a: number , b : number ): number{
+    return a+b;
+}
+
+console.log(twoSum(4,5));
