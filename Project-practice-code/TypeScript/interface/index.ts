@@ -1,11 +1,7 @@
 interface Person {
     name : string ;
     age : number;
-    address : {
-        city : string;
-        country : string;
-        pincode : number;
-    }
+    address : Address
 }
 
 let user:Person = {
@@ -42,14 +38,18 @@ if(isLegal(user)){
 interface Person2 {
     name : string ;
     age : number;
-    address ?: {
-        city : string;
-        country : string;
-        pincode : number;
-    }
+    address ?: Address;
 }
 
 let user2:Person2 = {
     name : "Ashmit Srivastava",
     age : 25
 }
+
+// interface inside interface or we can say interface uses interface
+
+interface Address{
+    city : string;
+    country : string;
+    pincode: number;
+}// now on previos interface we will use this 
