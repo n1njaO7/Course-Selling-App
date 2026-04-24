@@ -23,4 +23,19 @@ if (isLegal(user)) {
 else {
     console.log("Illegal");
 }
+let user2 = {
+    name: "Ashmit Srivastava",
+    age: 25
+};
+let person = {
+    name: "Ashmit",
+    city: "Basti",
+    phone: 7985009614,
+    greeting: () => {
+        return "hi";
+    },
+    greeting2: () => {
+        return 1;
+    }
+};
 //# sourceMappingURL=index.js.map
