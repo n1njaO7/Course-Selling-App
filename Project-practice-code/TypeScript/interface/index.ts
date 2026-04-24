@@ -53,3 +53,25 @@ interface Address{
     country : string;
     pincode: number;
 }// now on previos interface we will use this 
+
+//function in interface
+
+interface perFun{
+    name:string;
+    city:string;
+    phone:number;
+    greeting:()=>string;// Or greeting (): string;
+    greeting2 (): number;
+}
+
+let person:perFun = {
+    name : "Ashmit",
+    city : "Basti",
+    phone: 7985009614,
+    greeting :()=>{
+        return "hi"
+    },
+    greeting2:()=>{
+        return 1
+    }
+}
