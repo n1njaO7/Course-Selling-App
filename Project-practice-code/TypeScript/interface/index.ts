@@ -69,7 +69,7 @@ let person:perFun = {
     city : "Basti",
     phone: 7985009614,
     greeting :()=>{
-        return "hi"
+        return "hi" //but the problem here is we can use (return "hi" + this.name) therefore we have to use classes
     },
     greeting2:()=>{
         return 1
