@@ -32,10 +32,28 @@ let person = {
     city: "Basti",
     phone: 7985009614,
     greeting: () => {
-        return "hi";
+        return "hi"; //but the problem here is we can use (return "hi" + this.name) therefore we have to use classes
     },
     greeting2: () => {
         return 1;
     }
 };
+class Abc {
+    name;
+    age;
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+    greeting() {
+        if (18 > this.age) {
+            return "hi big bro " + this.name;
+        }
+        else {
+            return "hi bro " + this.age;
+        }
+    }
+}
+const m = new Abc("Ashmit", 24);
+console.log(m);
 //# sourceMappingURL=index.js.map
