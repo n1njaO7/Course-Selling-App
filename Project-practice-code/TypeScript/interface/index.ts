@@ -101,6 +101,9 @@ class Abc implements User{
 
 const m = new Abc("Ashmit",24)
 console.log(m);
+console.log(m.name)
+console.log(m.age)
+console.log(m.greeting)
 
 
 
