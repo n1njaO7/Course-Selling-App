@@ -104,6 +104,7 @@ console.log(m);
 console.log(m.name)
 console.log(m.age)
 console.log(m.greeting)
+console.log(m.greeting())
 
 
 
