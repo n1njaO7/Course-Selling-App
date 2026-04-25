@@ -99,7 +99,8 @@ class Abc implements User{
     }
 }
 
-
+const m = new Abc("Ashmit",24)
+console.log(m);
 
 
 
