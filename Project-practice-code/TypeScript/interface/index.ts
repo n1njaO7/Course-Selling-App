@@ -90,7 +90,7 @@ class Abc implements User{
         public age : number 
     ){}
     greeting(): string {
-        if(18>this.age){
+        if(18<this.age){
             return "hi big bro " + this.name
         }
         else{
