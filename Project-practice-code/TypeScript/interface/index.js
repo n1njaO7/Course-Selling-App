@@ -46,7 +46,7 @@ class Abc {
         this.age = age;
     }
     greeting() {
-        if (18 > this.age) {
+        if (18 < this.age) {
             return "hi big bro " + this.name;
         }
         else {
