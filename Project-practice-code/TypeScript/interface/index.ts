@@ -75,3 +75,31 @@ let person:perFun = {
         return 1
     }
 }
+
+// implementing interface in class
+
+interface User {
+    name : string;
+    age: number;
+    greeting (): string;
+}
+
+class Abc implements User{
+    constructor(
+        public name : string,
+        public age : number 
+    ){}
+    greeting(): string {
+        if(18>this.age){
+            return "hi big bro " + this.name
+        }
+        else{
+            return "hi bro " + this.age
+        }
+    }
+}
+
+
+
+
+
