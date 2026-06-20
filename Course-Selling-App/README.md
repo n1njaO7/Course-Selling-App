@@ -54,8 +54,9 @@ Table of Contents
 ## API Endpoints
 
 Below is an overview of the API routes this project exposes. Routes are shown with the expected HTTP method and a short description.
+Deployed on Render
 
-Base URL (development): http://localhost:3000
+Base URL (development): https://course-selling-app-xprt.onrender.com
 
 User routes
 - `POST /user/signup` — Create a new user
