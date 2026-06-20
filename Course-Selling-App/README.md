@@ -1,8 +1,7 @@
 # Course Selling App
 
-A simple course selling platform built with Node.js, Express and MongoDB. This repository provides a minimal backend API for user and admin authentication, course management and purchase tracking using Mongoose models.
+A course selling platform built with Node.js, Express and MongoDB. This repository provides a backend API for user and admin authentication, course management and purchase tracking using Mongoose models.
 
-> Note: This README was updated to reflect the current project structure, API endpoints, and setup steps.
 
 Table of Contents
 
@@ -191,19 +190,11 @@ curl -X POST http://localhost:3000/course/purchase \
   -d '{"userId":"<userId>","courseId":"<courseId>"}'
 ```
 
-## Development notes
-
-- Route handlers in this project currently return simple JSON responses (placeholders) — adapt them to your needs.
-- If you plan to store passwords, always hash them (bcrypt) and never store plaintext passwords in production.
-- Add input validation (e.g., using express-validator or Joi) and improve error handling before production use.
-- If the code uses `discription` as a field name in the Course model, consider renaming it to `description` and migrating existing data.
 
 ## Contributing
 
 Contributions are welcome. Open issues to report bugs or request features. Submit pull requests with clear descriptions and tests where applicable.
 
-## License
 
-This project does not include a license file. Add a LICENSE if you want to explicitly specify terms.
 
 
