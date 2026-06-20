@@ -65,6 +65,8 @@ userRouter.post("/signin", async (req, res) => {
             process.env.JWT_USER_PASSWORD
         );
 
+        res.cookie("userToken", token);
+
         return res.json({
             message: "Signin successful",
             token

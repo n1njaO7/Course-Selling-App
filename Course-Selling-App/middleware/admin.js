@@ -3,7 +3,7 @@ require("dotenv").config();
 
 function adminMiddleware(req, res, next) {
 
-    const token = req.headers.token;
+    const token = req.cookies.adminToken;
 
     if (!token) {
         return res.status(403).json({

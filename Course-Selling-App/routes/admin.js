@@ -70,6 +70,8 @@ adminRouter.post("/signin", async (req, res) => {
             process.env.JWT_ADMIN_PASSWORD
         );
 
+        res.cookie("adminToken", token);
+
         return res.json({
             message: "Signin successful",
             token
