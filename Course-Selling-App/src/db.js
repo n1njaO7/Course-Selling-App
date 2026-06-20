@@ -22,10 +22,10 @@ const AdminSchema = new Schema({
 const CourseSchema = new Schema({
     courseId : ObjectId,
     title : String,
-    discription : String,
+    description : String,
     price : Number,
     imgUrl : String,
-    creatorUrl : ObjectId
+    creatorId : ObjectId
 })
 
 const PurchaseSchema = new Schema({
@@ -44,6 +44,7 @@ async function connectDB() {
         await mongoose.connect(process.env.MONGO_URL);
         console.log("MongoDB Connected");
     } catch (error) {
+        console.log("FULL ERROR =>");
         console.log(error);
     }
 }
