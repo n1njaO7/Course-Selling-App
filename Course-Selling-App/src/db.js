@@ -1,3 +1,4 @@
+require("dotenv").config();
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const ObjectId = mongoose.Types.ObjectId;
@@ -38,11 +39,21 @@ const AdminModel = mongoose.model("admin",AdminSchema);
 const CourseModel = mongoose.model("course",CourseSchema);
 const PurchaseModel = mongoose.model("purchase",PurchaseSchema);
 
+async function connectDB() {
+    try {
+        await mongoose.connect(process.env.MONGO_URL);
+        console.log("MongoDB Connected");
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 module.exports={
     UserModel,
     AdminModel,
     CourseModel,
-    PurchaseModel
+    PurchaseModel,
+    connectDB
 }
 
 
