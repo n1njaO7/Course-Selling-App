@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
 
 const { AdminModel, CourseModel } = require("../src/db");
 const { adminMiddleware } = require("../middleware/admin");
@@ -23,11 +24,13 @@ adminRouter.post("/signup", async (req, res) => {
             });
         }
 
+        const hashedPassword = await bcrypt.hash(password, 10);
+
         await AdminModel.create({
             firstName,
             lastName,
             email,
-            password
+            password: hashedPassword
         });
 
         return res.json({
@@ -53,11 +56,21 @@ adminRouter.post("/signin", async (req, res) => {
     try {
 
         const admin = await AdminModel.findOne({
-            email,
-            password
+            email
         });
 
         if (!admin) {
+            return res.status(403).json({
+                message: "Invalid email or password"
+            });
+        }
+
+        const isMatch = await bcrypt.compare(
+            password,
+            admin.password
+        );
+
+        if (!isMatch) {
             return res.status(403).json({
                 message: "Invalid email or password"
             });
