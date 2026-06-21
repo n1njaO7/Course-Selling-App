@@ -139,9 +139,10 @@ adminRouter.put("/course", adminMiddleware, async (req, res) => {
 
     try {
 
-        await CourseModel.updateOne(
+        const result = await CourseModel.updateOne(
             {
-                _id: courseId
+                _id: courseId,
+                creatorId: req.adminId   // scope to this admin's own courses
             },
             {
                 title,
@@ -150,6 +151,12 @@ adminRouter.put("/course", adminMiddleware, async (req, res) => {
                 imgUrl
             }
         );
+
+        if (result.matchedCount === 0) {
+            return res.status(404).json({
+                message: "Course not found or you do not have permission to update it"
+            });
+        }
 
         return res.json({
             message: "Course updated successfully"
