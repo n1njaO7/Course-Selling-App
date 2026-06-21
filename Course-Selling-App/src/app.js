@@ -10,7 +10,7 @@ app.use(cookieParser());
 app.use(express.json());
 
 app.get("/", (req, res) => {
-    res.send("Course Selling App Backend is running 🚀");
+    res.send("Course Selling App Backend is running");
 });
 
 app.use("/user", userRouter);
